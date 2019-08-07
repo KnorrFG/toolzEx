@@ -29,8 +29,12 @@ def is_a(type_name, obj):
 def all_fn(*funcs):
     def inner(*args, **kwargs):
         return all(f(*args, **kwargs) for f in funcs)
+    
+    return inner
 
 
 def any_fn(*funcs):
     def inner(*args, **kwargs):
         return any(f(*args, **kwargs) for f in funcs)
+
+    return inner
