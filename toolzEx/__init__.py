@@ -51,7 +51,16 @@ def any_fn(*funcs):
     return inner
 
 
+def breaker(func):
+    @wraps
+    def inner(*args, **kwargs):
+        breakpoint()
+        return func(*args, **kwargs)
+    return inner
+
+
 lmap = compose(list, map)
 lfilter = compose(list, filter)
 lconcat = compose(list, concat)
 ltake = compose(list, take)
+lpluck = compose(list, pluck)
