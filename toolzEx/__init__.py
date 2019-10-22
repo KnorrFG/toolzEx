@@ -2,7 +2,8 @@ from itertools import (
     compress,
     starmap,
     tee,
-    product)
+    product,
+    combinations)
 
 from functools import (
     reduce,
@@ -13,10 +14,16 @@ from collections import namedtuple
 from toolz.sandbox.core import unzip
 
 from .trampolin import trampoline, R
-from .lambdas import F, shortcut as X
 
 from toolz import *
 
+from overload import overload
+
+from pyrsistent import (
+        v, pvector, m, pmap, s, pset, 
+        PRecord, field, pset_field, pmap_field, pvector_field,
+        PClass, freeze, thaw, ny, discard, inc, rex)
+ 
 
 class LazyList:
     """Returns elements from the iterator and stores them, so they can be
@@ -65,3 +72,5 @@ lconcat = compose(list, concat)
 ltake = compose(list, take)
 lpluck = compose(list, pluck)
 lcompress = compose(list, compress)
+lmapcat = compose(list, mapcat)
+lstarmap = compose(list, starmap)
